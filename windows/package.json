@@ -1,0 +1,39 @@
+{
+  "name": "promptforge",
+  "version": "1.0.0",
+  "description": "AI Prompt Management Tool for Windows",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win --x64 --arm64",
+    "build:win-x64": "electron-builder --win --x64",
+    "build:win-arm64": "electron-builder --win --arm64"
+  },
+  "build": {
+    "appId": "com.promptforge.app",
+    "productName": "PromptForge",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "keywords": ["prompt", "ai", "productivity"],
+  "author": "PromptForge",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  }
+}
