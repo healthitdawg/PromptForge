@@ -1,0 +1,33 @@
+# CODEOWNERS file for PromptForge
+# This file defines who owns the code and will be automatically requested for review on PRs
+
+# Default owner for everything in the repo
+* @healthitdawg
+
+# macOS specific files
+/macos/ @healthitdawg
+*.swift @healthitdawg
+*.xcodeproj/ @healthitdawg
+
+# Windows specific files
+/windows/ @healthitdawg
+*.js @healthitdawg
+*.html @healthitdawg
+*.css @healthitdawg
+
+# GitHub Actions workflows
+/.github/ @healthitdawg
+/.github/workflows/ @healthitdawg
+
+# Documentation
+*.md @healthitdawg
+/docs/ @healthitdawg
+
+# Configuration files
+package.json @healthitdawg
+*.yml @healthitdawg
+*.yaml @healthitdawg
+
+# Build scripts
+*.sh @healthitdawg
+*.py @healthitdawg
