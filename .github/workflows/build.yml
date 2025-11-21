@@ -30,13 +30,13 @@ jobs:
       working-directory: windows
       run: npm run build:win-x64
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
     
     - name: Build Windows ARM64 installer
       working-directory: windows
       run: npm run build:win-arm64
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
     
     - name: List built files
       working-directory: windows
@@ -58,4 +58,4 @@ jobs:
         draft: false
         prerelease: false
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
