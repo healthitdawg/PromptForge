@@ -13,7 +13,6 @@
   "build": {
     "appId": "com.promptforge.app",
     "productName": "PromptForge",
-    "publish": null,
     "win": {
       "target": [
         {
