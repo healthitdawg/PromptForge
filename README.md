@@ -24,13 +24,13 @@ A cross-platform AI prompt management application for macOS and Windows 11.
 ### macOS
 - **Requirements**: macOS 13+ (Ventura or later)
 - **Architecture**: Universal (Intel & Apple Silicon)
-- **Download**: [PromptForge-Installer.dmg](https://github.com/healthitdawg/PromptForge/releases/download/v1.0.0/PromptForge-Installer.dmg)
+- **Download**: [PromptForge-Installer.dmg](https://github.com/healthitdawg/PromptForge/releases/latest/download/PromptForge-Installer.dmg)
 - **Size**: 370KB
 
 ### Windows
 - **Requirements**: Windows 10/11
 - **Architecture**: Universal (x64 and ARM64)
-- **Download**: [PromptForge Setup 1.0.0.exe](https://github.com/healthitdawg/PromptForge/releases/download/v1.0.0/PromptForge.Setup.1.0.0.exe)
+- **Download**: [PromptForge Setup 1.0.0.exe](https://github.com/healthitdawg/PromptForge/releases/latest/download/PromptForge.Setup.1.0.0.exe)
 - **Size**: 148MB
 
 ## 🚀 Quick Start
