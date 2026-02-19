@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="NO" userDefinedModelVersionIdentifier="">
+    <entity name="FolderEntity" representedClassName="FolderEntity" syncable="YES" codeGenerationType="none">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" defaultValueString="New Folder"/>
+        <attribute name="sortOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FolderEntity" inverseName="parent" inverseEntity="FolderEntity"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FolderEntity" inverseName="children" inverseEntity="FolderEntity"/>
+        <relationship name="prompts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PromptEntity" inverseName="folder" inverseEntity="PromptEntity"/>
+    </entity>
+    <entity name="PromptEntity" representedClassName="PromptEntity" syncable="YES" codeGenerationType="none">
+        <attribute name="content" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isArchived" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="folder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FolderEntity" inverseName="prompts" inverseEntity="FolderEntity"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TagEntity" inverseName="prompts" inverseEntity="TagEntity"/>
+        <relationship name="versions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="VersionEntity" inverseName="prompt" inverseEntity="VersionEntity"/>
+        <fetchIndex name="byCreatedAt">
+            <fetchIndexElement property="createdAt" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <fetchIndex name="byFavorite">
+            <fetchIndexElement property="isFavorite" type="Binary" order="ascending"/>
+            <fetchIndexElement property="updatedAt" type="Binary" order="descending"/>
+        </fetchIndex>
+        <fetchIndex name="byTitle">
+            <fetchIndexElement property="title" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <fetchIndex name="byUpdatedAt">
+            <fetchIndexElement property="updatedAt" type="Binary" order="descending"/>
+        </fetchIndex>
+    </entity>
+    <entity name="TagEntity" representedClassName="TagEntity" syncable="YES" codeGenerationType="none">
+        <attribute name="color" optional="YES" attributeType="String" defaultValueString="blue"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="prompts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PromptEntity" inverseName="tags" inverseEntity="PromptEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="VersionEntity" representedClassName="VersionEntity" syncable="YES" codeGenerationType="none">
+        <attribute name="changeDescription" optional="YES" attributeType="String" defaultValueString="Saved"/>
+        <attribute name="content" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="prompt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PromptEntity" inverseName="versions" inverseEntity="PromptEntity"/>
+        <fetchIndex name="byTimestamp">
+            <fetchIndexElement property="timestamp" type="Binary" order="descending"/>
+        </fetchIndex>
+    </entity>
+    <elements>
+        <element name="FolderEntity" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="PromptEntity" positionX="160" positionY="-18" width="128" height="194"/>
+        <element name="TagEntity" positionX="160" positionY="207" width="128" height="74"/>
+        <element name="VersionEntity" positionX="399" positionY="-18" width="128" height="104"/>
+    </elements>
+</model>

@@ -1,24 +1,28 @@
-//
-//  PromptForgeApp.swift
-//  PromptForge
-//
-//  Created by John Brosius on 11/21/25.
-//
-
 import SwiftUI
 
 @main
 struct PromptForgeApp: App {
-    @StateObject private var dataManager = DataManager()
-    
+    @StateObject private var dataController  = DataController.shared
+    @StateObject private var promptVM        = PromptViewModel()
+    @StateObject private var sidebarVM       = SidebarViewModel()
+    @StateObject private var importExportVM  = ImportExportViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(dataManager)
-                .frame(minWidth: 900, minHeight: 600)
+            RootView()
+                .environment(\.managedObjectContext, dataController.viewContext)
+                .environmentObject(dataController)
+                .environmentObject(promptVM)
+                .environmentObject(sidebarVM)
+                .environmentObject(importExportVM)
+                .frame(minWidth: 1000, minHeight: 650)
         }
         .commands {
-            CommandGroup(replacing: .newItem) {}
+            AppCommands()
+        }
+
+        Settings {
+            SettingsView()
         }
     }
 }
